@@ -10,15 +10,6 @@ console.log(delt)
 
 
 for(let i=0; i < delt.length; i++){
-    // let somme=calcul()
-    // delt[i].addEventListener('click' , function(event){
-    //     let buttonclick = event.target 
-    //     buttonclick.parentElement.parentElement.remove()
-    //     // somme=somme-Number(price[i].innerHTML)
-    //     price[i].innerHTML=0
-
-    // })
-    //  console.log(somme)
     let buttonremove = delt[i] ;
     buttonremove.addEventListener('click' , function(event){
         let buttonclick = event.target 
@@ -61,8 +52,6 @@ for(let i=0; i<btnminus.length;i++){
     })
 
 }
-
-
 
 for(let i=0;i<heart.length;i++){
     heart[i].addEventListener('click',function(){
