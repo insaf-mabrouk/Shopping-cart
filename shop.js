@@ -1,51 +1,72 @@
-var delt=document.getElementsByClassName("btn-btn")
+var section=Array.from(document.getElementsByClassName("item"))
+var qte=Array.from(document.getElementsByClassName("quantityy"))
+var price=Array.from(document.getElementsByClassName("price"))
+var total=document.getElementById("total")
+var delt=Array.from(document.getElementsByClassName("btn-btn"))
+var btnplus=Array.from(document.getElementsByClassName("button-plus"))
+var btnminus=Array.from(document.getElementsByClassName("button-minus"))
+var heart=Array.from(document.getElementsByClassName("far fa-heart"))
 console.log(delt)
-for(var i=0; i < delt.length; i++){
 
-    delt[i].addEventListener('click',function(event){
-        var buttonClicked = event.target
-        buttonClicked.parentElement.parentElement.remove()
-    calcul()
 
-    })
+for(let i=0; i < delt.length; i++){
+    // let somme=calcul()
+    // delt[i].addEventListener('click' , function(event){
+    //     let buttonclick = event.target 
+    //     buttonclick.parentElement.parentElement.remove()
+    //     // somme=somme-Number(price[i].innerHTML)
+    //     price[i].innerHTML=0
+
+    // })
+    //  console.log(somme)
+    let buttonremove = delt[i] ;
+    buttonremove.addEventListener('click' , function(event){
+        let buttonclick = event.target 
+        buttonclick.parentElement.parentElement.remove() 
+   
+        price[i].innerHTML= 0 ;
+        calcul()
+})
 }
 
 
-// var btnplus=document.getElementsByClassName("button-plus")
-// var btnminus=document.getElementsByClassName("button-minus")
-// var price=document.getElementsByClassName("price")
-// var total=document.getElementsByClassName("total")
+function calcul(){
+    var somme=0;
+    for(let i=0;i<price.length;i++){
+    
+        somme=somme+Number(price[i].innerHTML)*Number(qte[i].innerHTML)
 
-// var section=document.getElementsByClassName("item")
-// var heart=document.getElementsByClassName("far fa-heart")
+    }
+    total.innerHTML=somme
+    console.log(somme)
+    return somme;
+
+}
 
 
-// var qte=document.getElementsByClassName('quantityy')
 
-// for(let i=0; i<btnplus.length;i++){
-//     btnplus[i].addEventListener('click',function(){
-//         qte[i].innerHTML= Number(qte[i].innerHTML)+1
-//     })
-// }
+for(let i=0; i<btnplus.length;i++){
+    btnplus[i].addEventListener('click',function(){
+        qte[i].innerHTML= Number(qte[i].innerHTML)+1
+        calcul();
+    })
+}
 
-// for(let i=0; i<btnminus.length;i++){
-//     btnminus[i].addEventListener('click',function(){
-//         if (Number(qte[i].innerHTML)>0)
-//         qte[i].innerHTML= Number (qte[i].innerHTML)-1
-//     })
-// }
-// function calcul(){
-//     let somme=0;
-//     for(let i=0;i<price.length;i++){
-//         somme=somme+Number(price[i].innerHTML)*Number(qte[i].innerHTML)
+for(let i=0; i<btnminus.length;i++){
+    btnminus[i].addEventListener('click',function(){
+        if (Number(qte[i].innerHTML)>0){
+        qte[i].innerHTML= Number (qte[i].innerHTML)-1
+        calcul();
+    }
+    })
 
-//     }
-//     total.innerHTML=somme
-//     return somme
-// }     
+}
 
-// for(let i=0;i<heart.length;i++){
-//     heart[i].addEventListener('click',fuction(){
-//           heart[i].classList.toggle(`fas`)
-//     })
-// }
+
+
+for(let i=0;i<heart.length;i++){
+    heart[i].addEventListener('click',function(){
+          heart[i].classList.toggle(`fas`)
+    })
+}   
+ 
